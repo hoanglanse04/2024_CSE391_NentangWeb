@@ -1,0 +1,42 @@
+h1{
+    border-left: 5px solid #ff7f50;
+    padding-left: 10px;
+    text-transform: uppercase;
+    color:rgb(217, 137, 39);
+}
+/* main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+} */
+#Khoi2{
+    display: flex;
+    justify-content: space-between;
+   
+}
+#Khoi2 ul {
+    list-style: none;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+img {
+    
+    width: 100%;
+}
+.cot{
+    padding: 20px 30px;
+}
+#Khoi3{
+    display: flex;
+}
+#Khoi3 ul{
+    list-style: none;
+    margin: 0 auto;
+    padding-left: 0;
+}
+.footer-1 li{
+    margin-top: 10px;
+}
+.footer-1 li i{
+    padding-right: 10px;
+}
