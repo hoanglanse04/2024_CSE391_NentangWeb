@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+  <ul id="list">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+    <li>item 5</li>
+    <li>item 6</li>
+    <li>item 7</li>
+    </ul>
+    <button class="addFirstBtn" type="button">Add First</button>
+    <button class="addLastBtn" type="button">Add Last</button>
+
+    <script>
+
+      let listItem =$('#list');
+      let addLastBtn = $('.addLastBtn');
+      let addFirstBtn = $('.addFirstBtn');
+      let indexFirst=1;
+      let indexLast =7;
+      const addFirstIndex =  () =>{
+        let newItem = document.createElement('li');
+        indexFirst--;
+        newItem.textContent = `item ` +indexFirst;
+        listItem.prepend(newItem);
+      }
+      const addLastIndex =  () =>{
+        let newItem = document.createElement('li');
+        indexLast++;
+        newItem.textContent = `item ` +indexLast;
+        listItem.append(newItem);
+      }
+      addFirstBtn.click(addFirstIndex);
+      addLastBtn.click(addLastIndex);
+    </script>
+  </body>
+</html>

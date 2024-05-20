@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ 
+</head>
+
+<body>
+  <div id="box">
+    <h3>Title</h3>
+    <div id="sub-title">In suscipit nec velit sit amet convallis. Integer</div>
+    </div>
+    <button class="btn" type="button">Click</button>
+    <script>
+      let btn = $('.btn');
+      let sub_title = $('#sub-title');
+    
+      const handleClick = () => {
+        sub_title.text("nut da duoc click");
+      }
+    
+      btn.click(handleClick);
+    
+    </script>
+  </body>
+</html>

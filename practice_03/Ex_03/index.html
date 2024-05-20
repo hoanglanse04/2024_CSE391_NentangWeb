@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  }
+  h3 {
+  margin-bottom: 10px;
+  }
+  .box {
+  border: 3px solid #eee;
+  display: none;
+  height: 100px;
+  margin-top: 5px;
+  padding: 10px;
+  width: 150px;
+  }
+</style>
+<body>
+
+    <h3>Title 01</h3>
+    <div class="box">Lorem ipsum dolor sit amet, consectetur adipiscingelit.</div>
+    <h3>Title 02</h3>
+    <div class="box">Sed porttitor turpis risus, vitae sodales nequevulputate ut.</div>
+    <h3>Title 03</h3>
+    <div class="box">In suscipit nec velit sit amet convallis.Integer.</div>
+      <script>
+        $(function (){
+          let list_title = $('h3');
+          console.log(list_title);
+          let list_desc = $('.box');
+          
+          console.log(list_desc);
+
+          const handleClick = function(){
+            list_desc.hide();
+            $(this).next('.box').show();
+          
+          }
+          list_title.click(handleClick);
+        })
+
+      </script>
+</body>
+</html>
