@@ -10,10 +10,26 @@
 h2{
     margin-top: 0;
     margin-bottom: 0;
+    font-weight: 10;
+}
+h1{
+    font-weight: 10;
 }
 .content p{
     margin-top: 5px;
     margin-bottom: 0;
     text-align: center;
     padding-left: 15px; 
+}
+.main-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2%;
+    text-align: center;
+    padding-top: 10px;
+    align-items: center;
+}
+.header-content a{
+    text-decoration: none;
+    background-color: antiquewhite;
 }
