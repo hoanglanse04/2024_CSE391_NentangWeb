@@ -1,0 +1,13 @@
+#bangSinhVien .bi-pencil-square {
+  font-size: 1.5rem; 
+  cursor: pointer; 
+  margin-right: 10px; 
+  color: rgb(91, 149, 201);
+}
+
+#bangSinhVien .bi-x-square{
+  font-size: 1.5rem; 
+  cursor: pointer; 
+  margin-right: 10px; 
+  color: red;
+}
