@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ứng dụng quản lý sinh viên</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <h2>Thêm sinh viên</h2>
+    <form id="formSinhVien">
+        Họ tên: <input type="text" id="hoTen"><br><br>
+        Mã SV: <input type="text" id="maSV"><br><br>
+        Ngày sinh: <input type="date" id="ngaySinh"><br><br>
+        Lớp: <input type="text" id="lop"><br><br>
+        <button type="submit">Thêm</button>
+    </form>
+
+    <h2>Danh sách sinh viên</h2>
+    <table id="bangSinhVien">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Mã SV</th>
+                <th>Ngày sinh</th>
+                <th>Lớp</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        //json??
+        //1. Là một định dạng dữ lieuj (chuỗi)
+        //2.
+        //3. Json:Number ,Boolean,Null,Array, object
+        // Mã hóa // Giải mã
+        // 
+        document.getElementById("formSinhVien").addEventListener("submit", function (event) {
+            event.preventDefault();
+            addOrUpdateStudent();
+        });
+
+        function getStudentList() {
+            return JSON.parse(localStorage.getItem("danhSachSinhVien")) || [];
+        }
+
+        function saveStudentList(studentList) {
+            localStorage.setItem("danhSachSinhVien", JSON.stringify(studentList));
+        }
+
+        function addOrUpdateStudent() {
+            const hoTen = document.getElementById("hoTen").value;
+            const maSV = document.getElementById("maSV").value;
+            const ngaySinh = document.getElementById("ngaySinh").value;
+            const lop = document.getElementById("lop").value;
+
+            if (!hoTen || !maSV || !ngaySinh || !lop) {
+                alert("Vui lòng điền đầy đủ thông tin.");
+                return;
+            }
+
+            const studentList = getStudentList();
+            const existingIndex = studentList.findIndex(student => student.maSV === maSV);
+
+            const student = { hoTen, maSV, ngaySinh, lop };
+
+            if (existingIndex > -1) {
+                studentList[existingIndex] = student;
+            } else {
+                studentList.push(student);
+            }
+
+            saveStudentList(studentList);
+            renderStudentList();
+            document.getElementById("formSinhVien").reset();
+        }
+
+        function renderStudentList() {
+            const studentList = getStudentList();
+            const tableBody = document.getElementById("bangSinhVien").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = "";
+
+            studentList.forEach((student, index) => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).innerText = student.hoTen;
+                row.insertCell(1).innerText = student.maSV;
+                row.insertCell(2).innerText = student.ngaySinh;
+                row.insertCell(3).innerText = student.lop;
+
+                const actionCell = row.insertCell(4);
+                const editButton = document.createElement("button");
+                editButton.innerText = "Sửa";
+                editButton.className = "edit";
+                editButton.onclick = function () {
+                    document.getElementById("hoTen").value = student.hoTen;
+                    document.getElementById("maSV").value = student.maSV;
+                    document.getElementById("ngaySinh").value = student.ngaySinh;
+                    document.getElementById("lop").value = student.lop;
+                };
+
+                const deleteButton = document.createElement("button");
+                deleteButton.innerText = "Delete";
+                deleteButton.className = "delete";
+                deleteButton.onclick = function () {
+                    if (confirm("Bạn có chắc chắn muốn xóa sinh viên này không?")) {
+                        studentList.splice(index, 1);
+                        saveStudentList(studentList);
+                        renderStudentList();
+                    }
+                };
+
+                actionCell.appendChild(editButton);
+                actionCell.appendChild(deleteButton);
+            });
+        }
+
+        window.onload = renderStudentList;
+    </script>
+
+</body>
+
+</html>
